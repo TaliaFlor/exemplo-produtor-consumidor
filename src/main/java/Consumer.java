@@ -16,6 +16,7 @@ public class Consumer implements Runnable {
         try {
             while (true) {
                 if (queue.remainingCapacity() == 5) {
+                    System.out.println("*** [Wait] Queue vazia ***");
                     Thread.sleep(TIMEOUT);
                 }
                 int num = queue.poll();
@@ -24,10 +25,10 @@ public class Consumer implements Runnable {
 
                 Thread.sleep(TIMEOUT);
 
-                if (queue.remainingCapacity() == 3) {
-                    System.out.println("====== Queue ======");
+                if (queue.remainingCapacity() <= 3) {
+                    System.out.println("========== Queue ==========");
                     System.out.println("\t" + queue);
-                    System.out.println("===================");
+                    System.out.println("===========================");
                     Thread.sleep(2000);
                 }
             }
