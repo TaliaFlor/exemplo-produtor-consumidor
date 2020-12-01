@@ -19,6 +19,7 @@ public class Producer implements Runnable {
                 int num = (int) (Math.random() * 100);
                 boolean sucessful = queue.offer(num);
                 if(!sucessful) {
+                    System.out.println("*** [Wait] Queue cheia ***");
                     Thread.sleep(TIMEOUT);
                 }
 
